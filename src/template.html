@@ -3,7 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><!-- Title Here --></title>
+    <title>Odin Battleship</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1 id="game-title">One Ship</h1>
+    </header>
+    <div id="game">
+      <div class="player-card">
+        <h2 class="player-title">Strawhats</h2>
+        <img class="player-img" id="Luffy" src="img/Luffy.png">
+        <div class="ship-count">Sh<span class="normal-i">i</span>ps Rema<span class="normal-i">i</span>n<span class="normal-i">i</span>ng: <span id="player1-ship-count"></span></div>
+      </div>
+      <div id="boards"></div>
+      <div class="player-card">
+        <h2 class="player-title">Mar<span class="normal-i">i</span>nes</h2>
+        <img class="player-img" id="Garp" src="img/Garp.png">
+        <div class="ship-count">Sh<span class="normal-i">i</span>ps Rema<span class="normal-i">i</span>n<span class="normal-i">i</span>ng: <span id="player2-ship-count"></span></div>
+      </div>
+    </div>
+    <div id="bottom">
+      <div id="buttons">
+        <button class="hidden start-game">Conf<span class="normal-i">i</span>rm & Start Game</button>
+        <button class="randomize-ships">Randomize Ships</button>
+        <button class="hidden reset-game">Reset Game</button>
+      </div>
+    </div>
+    <div class="hidden modal-overlay">
+        <div id="announcements">
+          <div id="game-end-announcement"></div>
+          <button class="play-again">Play Again</button>
+        </div>
+    </div>
+  </body>
 </html>
