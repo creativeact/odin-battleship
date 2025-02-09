@@ -1,1 +1,1 @@
-[Live Preview] (https://creativeact.github.io/odin-battleship/)
+[Live Preview](https://creativeact.github.io/odin-battleship/)
