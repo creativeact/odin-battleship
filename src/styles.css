@@ -1,14 +1,14 @@
 :root {
   --main-color: rgb(197, 113, 113);
-  --secondary-color:rgb(227, 223, 223);
+  --secondary-color: rgb(227, 223, 223);
   --sea-color: rgb(149, 204, 234);
   --button-color: rgb(195, 165, 0);
 }
 
 @font-face {
-  font-family: 'OnePiece';
-  src:  url('./fonts/one_piece_font-webfont.woff'),
-        url('./fonts/one_piece_font-webfont.woff');
+  font-family: "OnePiece";
+  src: url("./fonts/one_piece_font-webfont.woff"),
+    url("./fonts/one_piece_font-webfont.woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('./img/water-anime-style.jpg');
+  background-image: url("./img/water-anime-style.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@ header {
 }
 
 #game-title {
-  font-family: 'OnePiece';
+  font-family: "OnePiece";
   font-size: 6rem;
 }
 
@@ -68,30 +68,30 @@ header {
 }
 
 .player-title {
-  font-family: 'OnePiece';
+  font-family: "OnePiece";
   font-size: 2.25rem;
 }
 
 .player-title > .normal-i {
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 2.2rem;
   font-weight: lighter;
 }
 
 .ship-count > .normal-i {
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 1.5rem;
   font-weight: lighter;
 }
 
 button > .normal-i {
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 2rem;
   font-weight: lighter;
 }
 
 .ship-count {
-  font-family: 'OnePiece';
+  font-family: "OnePiece";
   font-size: 1.5rem;
 }
 
@@ -124,7 +124,7 @@ button > .normal-i {
 #Marines > .board-cell:hover {
   cursor: pointer;
   background-color: darkgray;
-  background-image: url('./img/cannon-ball.png');
+  background-image: url("./img/cannon-ball.png");
   background-size: 60%;
   background-position: center;
   background-repeat: no-repeat;
@@ -140,20 +140,20 @@ button > .normal-i {
 
 .ship-strawhats {
   position: relative;
-  background-image: url('./img/AlwaysSunnyShip.png');
+  background-image: url("./img/AlwaysSunnyShip.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .board-cell.ship-strawhats.hit {
-  background-image: url('./img/alpha-x.svg'),  url('./img/AlwaysSunnyShip.png');
+  background-image: url("./img/alpha-x.svg"), url("./img/AlwaysSunnyShip.png");
   background-size: cover, cover;
   background-repeat: no-repeat, no-repeat;
   background-position: center, center;
 }
 
 .board-cell.ship-marines.hit {
-  background-image: url('./img/alpha-x.svg'),  url('./img/MarineShip.png');
+  background-image: url("./img/alpha-x.svg"), url("./img/MarineShip.png");
   background-size: cover, cover;
   background-repeat: no-repeat, no-repeat;
   background-position: center, center;
@@ -176,7 +176,7 @@ button > .normal-i {
 button {
   padding: 15px;
   border-radius: 25px;
-  font-family: 'OnePiece';
+  font-family: "OnePiece";
   font-size: 2rem;
   background-color: var(--secondary-color);
 }
@@ -186,7 +186,8 @@ button:hover {
   background-color: var(--button-color);
 }
 
-button.start-game, button.randomize-ships {
+button.start-game,
+button.randomize-ships {
   display: flex;
 }
 
@@ -197,7 +198,7 @@ button.start-game, button.randomize-ships {
   justify-content: center;
   align-items: center;
   font-size: 4rem;
-  font-family: 'OnePiece';
+  font-family: "OnePiece";
   width: 500px;
   height: 300px;
   border: 2px black solid;
@@ -230,4 +231,3 @@ button.start-game, button.randomize-ships {
 .hidden {
   display: none !important;
 }
-

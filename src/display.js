@@ -1,17 +1,16 @@
-import { clearShips } from './ship';
+import { clearShips } from "./ship";
 
 // Boards //
 function createEmptyBoard(player, game) {
-  const boardsDiv = document.querySelector('#boards');
+  const boardsDiv = document.querySelector("#boards");
 
-  const boardContainer = document.createElement('div');
-  boardContainer.classList.add('board-container');
+  const boardContainer = document.createElement("div");
+  boardContainer.classList.add("board-container");
 
   const playerBoard = document.createElement("div");
   playerBoard.classList.add("player-board");
-  playerBoard.setAttribute('id', `${player.name}`)
+  playerBoard.setAttribute("id", `${player.name}`);
   const board = player.board;
- 
 
   let rows = 10;
   let columns = 10;
@@ -25,11 +24,11 @@ function createEmptyBoard(player, game) {
   boardsDiv.appendChild(boardContainer);
 }
 
-function resetBoard (player) {
+function resetBoard(player) {
   let board = clearShips(player.board);
   const playerBoard = document.querySelector(`#${player.name}`);
   if (playerBoard) {
-    const boardContainer = playerBoard.closest('.board-container');
+    const boardContainer = playerBoard.closest(".board-container");
     if (boardContainer) {
       boardContainer.remove();
     }
@@ -37,7 +36,7 @@ function resetBoard (player) {
 
   // Update shipcount on reset
   const name = player.name;
-  const playerString = name === 'Strawhats' ? "player1" : "player2";
+  const playerString = name === "Strawhats" ? "player1" : "player2";
   displayShipCount(player, playerString);
   return board;
 }
@@ -88,7 +87,7 @@ function getDOMCellElement(board, cell) {
 function updateShipDisplay(player) {
   const board = player.board;
   const playerBoard = document.querySelector(`#${player.name}`);
-  
+
   let rows = 10;
   let columns = 10;
   for (let x = 0; x < rows; x++) {
@@ -99,17 +98,15 @@ function updateShipDisplay(player) {
       );
       if (cell.shipData !== null) {
         cellElement.classList.add("ship");
-        if (player.playerType === 'human') {
-          cellElement.classList.add('ship-strawhats');
+        if (player.playerType === "human") {
+          cellElement.classList.add("ship-strawhats");
+        } else if (player.playerType === "computer") {
+          cellElement.classList.add("ship-marines");
         }
-        else if (player.playerType === 'computer') {
-          cellElement.classList.add('ship-marines');
-        }
-      }
-      else if (cell.shipData === null) {
-        cellElement.classList.remove('ship');
-        if (player.playerType === 'human') {
-          cellElement.classList.remove('ship-strawhats');
+      } else if (cell.shipData === null) {
+        cellElement.classList.remove("ship");
+        if (player.playerType === "human") {
+          cellElement.classList.remove("ship-strawhats");
         }
       }
     }
@@ -120,24 +117,33 @@ function displayWinner(player) {
   const winner = player.name;
   const gameEndAnnouncement = document.querySelector("#game-end-announcement");
   gameEndAnnouncement.textContent = `${winner} win!`;
-  toggleHideElement('.modal-overlay');
+  toggleHideElement(".modal-overlay");
 }
 
 function displayShipCount(player, playerString) {
   const shipCountSpan = document.querySelector(`#${playerString}-ship-count`);
   const shipCount = player.board.getShips();
-  shipCountSpan.textContent = '';
+  shipCountSpan.textContent = "";
   shipCountSpan.textContent = `${shipCount}`;
 }
 
 function toggleHideElement(element) {
   const target = document.querySelector(element);
   if (target) {
-    target.classList.toggle('hidden');
-  }
-  else {
+    target.classList.toggle("hidden");
+  } else {
     console.error(`Element "${element}" not found.`);
   }
 }
 
-export { createEmptyBoard, resetBoard, displayAttackResult, displayWinner, updateShipDisplay, getDOMCellElement, displayShipCount, toggleHideElement, clearShips };
+export {
+  createEmptyBoard,
+  resetBoard,
+  displayAttackResult,
+  displayWinner,
+  updateShipDisplay,
+  getDOMCellElement,
+  displayShipCount,
+  toggleHideElement,
+  clearShips,
+};

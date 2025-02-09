@@ -59,12 +59,12 @@ const Gameboard = () => {
   };
 
   const getBoardReady = () => {
-     return boardReady;
-  }
+    return boardReady;
+  };
 
   const setBoardReady = () => {
     boardReady = true;
-  }
+  };
 
   const getCell = (x, y) => {
     return board[x][y];
@@ -89,9 +89,19 @@ const Gameboard = () => {
 
   const setShips = (newShips) => {
     ships = newShips;
-  }
+  };
 
-  return { getBoard, getShips, setShips, placeShip, receiveAttack, getCell, allShipsSunk, getBoardReady, setBoardReady };
+  return {
+    getBoard,
+    getShips,
+    setShips,
+    placeShip,
+    receiveAttack,
+    getCell,
+    allShipsSunk,
+    getBoardReady,
+    setBoardReady,
+  };
 };
 
 const Cell = (xCoord, yCoord) => {
@@ -109,7 +119,6 @@ const Player = (name, playerType = "human") => {
     name: name,
     playerType,
     board: Gameboard(),
-
   };
 };
 

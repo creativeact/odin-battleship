@@ -1,6 +1,14 @@
-import { createEmptyBoard, resetBoard, displayAttackResult, getDOMCellElement, displayShipCount, displayWinner, toggleHideElement } from "./display";
+import {
+  createEmptyBoard,
+  resetBoard,
+  displayAttackResult,
+  getDOMCellElement,
+  displayShipCount,
+  displayWinner,
+  toggleHideElement,
+} from "./display";
 import { randomizeShips } from "./ship";
-import { Player } from './factory';
+import { Player } from "./factory";
 
 const gameController = (player1, player2) => {
   let attackingPlayer = player1;
@@ -23,19 +31,19 @@ const gameController = (player1, player2) => {
     const attackResult = defendingPlayer.board.receiveAttack(x, y);
 
     // String needed to align with querySelector for each player's ship-count div
-    const defendingPlayerString = defendingPlayer === player1 ? "player1" : "player2";
+    const defendingPlayerString =
+      defendingPlayer === player1 ? "player1" : "player2";
 
     if (attackResult === "gameover") {
       gameOver = true;
       winner = attackingPlayer;
       displayShipCount(defendingPlayer, defendingPlayerString);
       displayWinner(winner);
-    } else if (attackResult !== "invalid")
-        {
-            displayShipCount(defendingPlayer, defendingPlayerString);
-            switchPlayer();
-            if (attackingPlayer.playerType === "computer") computerTurn();
-        }
+    } else if (attackResult !== "invalid") {
+      displayShipCount(defendingPlayer, defendingPlayerString);
+      switchPlayer();
+      if (attackingPlayer.playerType === "computer") computerTurn();
+    }
     return attackResult;
   };
 
@@ -60,66 +68,63 @@ const gameController = (player1, player2) => {
 
   const setupEventListeners = (player1) => {
     const board = player1.board;
-    const randomizeShipsBtn = document.querySelector('.randomize-ships');
-    const startGameBtn = document.querySelector('.start-game');
-    const resetGameBtn = document.querySelector('.reset-game');
-    const playAgainBtn = document.querySelector('.play-again');
+    const randomizeShipsBtn = document.querySelector(".randomize-ships");
+    const startGameBtn = document.querySelector(".start-game");
+    const resetGameBtn = document.querySelector(".reset-game");
+    const playAgainBtn = document.querySelector(".play-again");
 
     randomizeShipsBtn.replaceWith(randomizeShipsBtn.cloneNode(true));
     startGameBtn.replaceWith(startGameBtn.cloneNode(true));
     resetGameBtn.replaceWith(resetGameBtn.cloneNode(true));
     playAgainBtn.replaceWith(playAgainBtn.cloneNode(true));
 
-    const newRandomizeShipsBtn = document.querySelector('.randomize-ships');
-    const newStartGameBtn = document.querySelector('.start-game');
-    const newResetGameBtn = document.querySelector('.reset-game');
-    const newPlayAgainBtn = document.querySelector('.play-again');
+    const newRandomizeShipsBtn = document.querySelector(".randomize-ships");
+    const newStartGameBtn = document.querySelector(".start-game");
+    const newResetGameBtn = document.querySelector(".reset-game");
+    const newPlayAgainBtn = document.querySelector(".play-again");
 
-    newRandomizeShipsBtn.addEventListener('click', () => {
-        if (!board.getBoardReady() && gameReady === false) {
-            randomizeShips(player1);
-            board.setBoardReady();
-            toggleHideElement('.start-game');
-        }
-        else if(gameReady === false) {
-          randomizeShips(player1);
-        }
-        else console.error('Ship placement error');
+    newRandomizeShipsBtn.addEventListener("click", () => {
+      if (!board.getBoardReady() && gameReady === false) {
+        randomizeShips(player1);
+        board.setBoardReady();
+        toggleHideElement(".start-game");
+      } else if (gameReady === false) {
+        randomizeShips(player1);
+      } else console.error("Ship placement error");
     });
 
-    newStartGameBtn.addEventListener('click', () => {
+    newStartGameBtn.addEventListener("click", () => {
       if (board.getBoardReady() && gameReady === false) {
         gameReady = true;
-        console.log('Validating that Game is ready: ', gameReady);
-        toggleHideElement('.start-game');
-        toggleHideElement('.randomize-ships');
-        toggleHideElement('.reset-game');
+        console.log("Validating that Game is ready: ", gameReady);
+        toggleHideElement(".start-game");
+        toggleHideElement(".randomize-ships");
+        toggleHideElement(".reset-game");
       }
     });
 
-    newResetGameBtn.addEventListener('click', () => {
+    newResetGameBtn.addEventListener("click", () => {
       if (gameReady === true) {
         player1.board = resetBoard(player1);
         player2.board = resetBoard(player2);
         initializeGame();
         gameReady = false;
-        toggleHideElement('.reset-game');
-        toggleHideElement('.randomize-ships');
+        toggleHideElement(".reset-game");
+        toggleHideElement(".randomize-ships");
       }
     });
 
-    newPlayAgainBtn.addEventListener('click', () => {
+    newPlayAgainBtn.addEventListener("click", () => {
       if (gameReady === true) {
         player1.board = resetBoard(player1);
         player2.board = resetBoard(player2);
         initializeGame();
         gameReady = false;
-        toggleHideElement('.reset-game');
-        toggleHideElement('.randomize-ships');
-        toggleHideElement('.modal-overlay');
+        toggleHideElement(".reset-game");
+        toggleHideElement(".randomize-ships");
+        toggleHideElement(".modal-overlay");
       }
     });
-
   };
 
   return { switchPlayer, handleTurn, getGameState, setupEventListeners };
@@ -143,13 +148,13 @@ function randomizeAttack(board) {
 }
 
 const initializeGame = () => {
-    const player1 = Player("Strawhats");
-    const player2 = Player("Marines", "computer");
-    const game = gameController(player1, player2);
-    createEmptyBoard(player1, game);
-    createEmptyBoard(player2, game);
-    randomizeShips(player2);
-    game.setupEventListeners(player1);
-}
+  const player1 = Player("Strawhats");
+  const player2 = Player("Marines", "computer");
+  const game = gameController(player1, player2);
+  createEmptyBoard(player1, game);
+  createEmptyBoard(player2, game);
+  randomizeShips(player2);
+  game.setupEventListeners(player1);
+};
 
 export { initializeGame };

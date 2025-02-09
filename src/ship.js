@@ -52,9 +52,7 @@ function randomizeShips(player) {
       try {
         board.placeShip(ship, randomX, randomY, isHorizontal);
         placed = true;
-      } catch (error) {
-  
-      }
+      } catch (error) {}
     }
   });
   updateShipDisplay(player);
@@ -69,13 +67,13 @@ function clearShips(board) {
         const cellElement = document.querySelector(
           `.board-cell[data-coords="${x},${y}"]`,
         );
-        cellElement.classList.remove("ship", 'ship-strawhats');
+        cellElement.classList.remove("ship", "ship-strawhats");
         cell.shipData = null;
       }
     }
   }
   board.setShips([]);
   return board;
-};
+}
 
 export { createShip, randomizeShips, clearShips };
