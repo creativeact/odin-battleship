@@ -22,6 +22,23 @@ const createShip = (shipType) => {
   };
 };
 
+function clearShips(board) {
+  for (let x = 0; x < 10; x++) {
+    for (let y = 0; y < 10; y++) {
+      let cell = board.getCell(x, y);
+      if (cell.shipData) {
+        const cellElement = document.querySelector(
+          `.board-cell[data-coords="${x},${y}"]`,
+        );
+        cellElement.classList.remove("ship", "ship-strawhats");
+        cell.shipData = null;
+      }
+    }
+  }
+  board.setShips([]);
+  return board;
+};
+
 function randomizeShips(player) {
   let board = clearShips(player.board);
   console.log("Board after clearing ships:", board);
@@ -56,23 +73,6 @@ function randomizeShips(player) {
     }
   });
   updateShipDisplay(player);
-  return board;
-}
-
-function clearShips(board) {
-  for (let x = 0; x < 10; x++) {
-    for (let y = 0; y < 10; y++) {
-      let cell = board.getCell(x, y);
-      if (cell.shipData) {
-        const cellElement = document.querySelector(
-          `.board-cell[data-coords="${x},${y}"]`,
-        );
-        cellElement.classList.remove("ship", "ship-strawhats");
-        cell.shipData = null;
-      }
-    }
-  }
-  board.setShips([]);
   return board;
 }
 
