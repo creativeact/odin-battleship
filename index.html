@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Battleship</title>
-  <script defer src="main.js"></script></head>
+    <script defer src="main.js"></script>
+  </head>
   <body>
     <header>
       <h1 id="game-title">One Ship</h1>
@@ -12,28 +13,38 @@
     <div id="game">
       <div class="player-card">
         <h2 class="player-title">Strawhats</h2>
-        <img class="player-img" id="Luffy" src="be2f50d10b980ed368db.png">
-        <div class="ship-count">Sh<span class="normal-i">i</span>ps Rema<span class="normal-i">i</span>n<span class="normal-i">i</span>ng: <span id="player1-ship-count"></span></div>
+        <img class="player-img" id="Luffy" src="be2f50d10b980ed368db.png" />
+        <div class="ship-count">
+          Sh<span class="normal-i">i</span>ps Rema<span class="normal-i">i</span
+          >n<span class="normal-i">i</span>ng:
+          <span id="player1-ship-count"></span>
+        </div>
       </div>
       <div id="boards"></div>
       <div class="player-card">
         <h2 class="player-title">Mar<span class="normal-i">i</span>nes</h2>
-        <img class="player-img" id="Garp" src="5b235f8768ddd5341108.png">
-        <div class="ship-count">Sh<span class="normal-i">i</span>ps Rema<span class="normal-i">i</span>n<span class="normal-i">i</span>ng: <span id="player2-ship-count"></span></div>
+        <img class="player-img" id="Garp" src="5b235f8768ddd5341108.png" />
+        <div class="ship-count">
+          Sh<span class="normal-i">i</span>ps Rema<span class="normal-i">i</span
+          >n<span class="normal-i">i</span>ng:
+          <span id="player2-ship-count"></span>
+        </div>
       </div>
     </div>
     <div id="bottom">
       <div id="buttons">
-        <button class="hidden start-game">Conf<span class="normal-i">i</span>rm & Start Game</button>
+        <button class="hidden start-game">
+          Conf<span class="normal-i">i</span>rm & Start Game
+        </button>
         <button class="randomize-ships">Randomize Ships</button>
         <button class="hidden reset-game">Reset Game</button>
       </div>
     </div>
     <div class="hidden modal-overlay">
-        <div id="announcements">
-          <div id="game-end-announcement"></div>
-          <button class="play-again">Play Again</button>
-        </div>
+      <div id="announcements">
+        <div id="game-end-announcement"></div>
+        <button class="play-again">Play Again</button>
+      </div>
     </div>
   </body>
 </html>
